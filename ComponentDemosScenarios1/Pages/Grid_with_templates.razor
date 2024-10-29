@@ -1,0 +1,33 @@
+@page "/grid_with_templates"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@inject IJSRuntime JS
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+
+<div class="row-layout grid-with-templates-container">
+    <div class="column-layout group">
+        <IgbGrid Data="@_iGNorthwindAPIEmployeeDto" PrimaryKey="EmployeeId" RowSelection="GridSelectionMode.Multiple" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" grid_with_templates-scope>
+            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="Employee name" Width="212px" Pinned="true" Groupable="true" Sortable="true" Resizable="true" BodyTemplateScript="columnBodyTemplateScript" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="Job title" Groupable="true" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Address.Region" DataType="GridColumnDataType.String" Header="State" Width="179px" Groupable="true" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Address.City" Header="City" Width="209px" Groupable="true" Sortable="true" Resizable="true" BodyTemplateScript="columnBodyTemplateScript1" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="Phone" Groupable="true" Sortable="true" Resizable="true" BodyTemplateScript="columnBodyTemplateScript2" Selectable="false"></IgbColumn>
+            <IgbColumn Field="HireDate" Header="Hire date" Width="189px" Groupable="true" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Width="203px" Groupable="true" Sortable="true" Resizable="true" BodyTemplateScript="columnBodyTemplateScript3" Selectable="false"></IgbColumn>
+        </IgbGrid>
+    </div>
+</div>
+
+@code {
+    private List<CustomerDto> _grid_variable = new();
+    private List<EmployeeDto> _iGNorthwindAPIEmployeeDto = new();
+    private IJSObjectReference module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _grid_variable = await IG_NorthwindAPIService.GetCustomerDtoList();
+        _iGNorthwindAPIEmployeeDto = await IG_NorthwindAPIService.GetEmployeeDtoList();
+        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Pages/Grid_with_templates.razor.js");
+        await base.OnInitializedAsync();
+    }
+}

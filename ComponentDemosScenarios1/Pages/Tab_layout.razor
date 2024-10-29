@@ -1,0 +1,426 @@
+@page "/tab_layout"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@using Financial
+@using Models.Financial
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+@inject IFinancialService FinancialService
+
+<div class="row-layout tab-layout-container">
+    <div class="column-layout group">
+        <IgbTabs class="tabs" tab_layout-scope>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab Selected="true">
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTab>
+                <span class="material-icons">
+                    backup
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+        </IgbTabs>
+        <IgbTabs Alignment="TabsAlignment.Center" class="tabs" tab_layout-scope>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab Selected="true">
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTab>
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    info
+                </span>
+                <span>Label</span>
+            </IgbTab>
+        </IgbTabs>
+        <IgbTabs Alignment="TabsAlignment.End" class="tabs" tab_layout-scope>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab Selected="true">
+                <span class="material-icons">
+                    assignment
+                </span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    account_balance_wallet
+                </span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    account_circle
+                </span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    info
+                </span>
+            </IgbTab>
+        </IgbTabs>
+        <IgbTabs class="tabs" tab_layout-scope>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab></IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab></IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab Selected="true"></IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab></IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+            <IgbTab></IgbTab>
+        </IgbTabs>
+        <div class="row-layout group_1">
+            <IgbTabs Alignment="TabsAlignment.Justify" class="tabs" tab_layout-scope>
+                <IgbTabPanel class="row-layout tab-item-content_1" tab_layout-scope></IgbTabPanel>
+                <IgbTab Selected="true">
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Tab </span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content_2" tab_layout-scope>
+                    <IgbCard class="card" tab_layout-scope>
+                        <IgbCardHeader>
+                            <h3 slot="title">
+                                Title goes here...
+                            </h3>
+                            <h5 slot="subtitle">
+                                Subtitle goes here...
+                            </h5>
+                        </IgbCardHeader>
+                        <IgbCardActions class="actions-content" tab_layout-scope>
+                            <IgbButton Variant="ButtonVariant.Flat" slot="start" class="button" tab_layout-scope>
+                                Button
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                            <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" tab_layout-scope>
+                                <span class="material-icons">
+                                    favorite
+                                </span>
+                                <IgbRipple></IgbRipple>
+                            </IgbIconButton>
+                            <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" tab_layout-scope>
+                                <span class="material-icons">
+                                    bookmark
+                                </span>
+                                <IgbRipple></IgbRipple>
+                            </IgbIconButton>
+                            <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" tab_layout-scope>
+                                <span class="material-icons">
+                                    share
+                                </span>
+                                <IgbRipple></IgbRipple>
+                            </IgbIconButton>
+                        </IgbCardActions>
+                    </IgbCard>
+                </IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope>
+                    <IgbCalendar HideHeader="false" class="calendar" tab_layout-scope></IgbCalendar>
+                </IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>Label</span>
+                </IgbTab>
+                <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope></IgbTabPanel>
+                <IgbTab>
+                    <span class="material-icons">
+                        info
+                    </span>
+                    <span>TabEnd</span>
+                </IgbTab>
+            </IgbTabs>
+        </div>
+    </div>
+    <div class="column-layout group">
+        <IgbTabs Alignment="TabsAlignment.Justify" class="tabs" tab_layout-scope>
+            <IgbTabPanel class="column-layout tab-item-content_3" tab_layout-scope>
+                <div class="column-layout group_2">
+                    <div class="row-layout group_2">
+                        <IgbInput Label="Label" Required Outlined="true" class="input" tab_layout-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput DisplayType="InputType.Password" Label="Password" Required Outlined="true" class="input" tab_layout-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    lock
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Label" Required Outlined="true" class="input" tab_layout-scope></IgbInput>
+                    </div>
+                    <IgbButton class="button_1 button_1_1" tab_layout-scope>
+                        Some action
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+                <IgbGrid Data="@_iGNorthwindAPICustomerDto" PrimaryKey="CustomerId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" tab_layout-scope>
+                    <IgbColumn Field="CustomerId" DataType="GridColumnDataType.String" Header="customerId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CompanyName" DataType="GridColumnDataType.String" Header="companyName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ContactName" DataType="GridColumnDataType.String" Header="contactName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ContactTitle" DataType="GridColumnDataType.String" Header="contactTitle" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Street" DataType="GridColumnDataType.String" Header="address street" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.City" DataType="GridColumnDataType.String" Header="address city" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Region" DataType="GridColumnDataType.String" Header="address region" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.PostalCode" DataType="GridColumnDataType.String" Header="address postalCode" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Country" DataType="GridColumnDataType.String" Header="address country" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="address phone" Sortable="true" Selectable="false"></IgbColumn>
+                </IgbGrid>
+            </IgbTabPanel>
+            <IgbTab Selected="true">
+                <span class="material-icons">
+                    grid_on
+                </span>
+                <span>input + grid</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content" tab_layout-scope>
+                <IgbGrid Data="@_iGNorthwindAPIEmployeeDto" PrimaryKey="EmployeeId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" tab_layout-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
+                    <IgbColumn Field="EmployeeId" DataType="GridColumnDataType.Number" Header="employeeId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="FirstName" DataType="GridColumnDataType.String" Header="firstName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="title" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="titleOfCourtesy" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="BirthDate" DataType="GridColumnDataType.Date" Header="birthDate" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="HireDate" DataType="GridColumnDataType.Date" Header="hireDate" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="AddressId" DataType="GridColumnDataType.String" Header="addressId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Street" DataType="GridColumnDataType.String" Header="address street" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.City" DataType="GridColumnDataType.String" Header="address city" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Region" DataType="GridColumnDataType.String" Header="address region" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.PostalCode" DataType="GridColumnDataType.String" Header="address postalCode" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Country" DataType="GridColumnDataType.String" Header="address country" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="address phone" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Notes" DataType="GridColumnDataType.String" Header="notes" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="AvatarUrl" DataType="GridColumnDataType.String" Header="avatarUrl" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ReportsTo" DataType="GridColumnDataType.Number" Header="reportsTo" Sortable="true" Selectable="false"></IgbColumn>
+                </IgbGrid>
+            </IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    arrow_forward
+                </span>
+                <span>Row layout + grid</span>
+            </IgbTab>
+            <IgbTabPanel class="column-layout tab-item-content" tab_layout-scope>
+                <IgbGrid Data="@_iGNorthwindAPICustomerDto" PrimaryKey="CustomerId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" tab_layout-scope>
+                    <IgbColumn Field="CustomerId" DataType="GridColumnDataType.String" Header="customerId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CompanyName" DataType="GridColumnDataType.String" Header="companyName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ContactName" DataType="GridColumnDataType.String" Header="contactName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ContactTitle" DataType="GridColumnDataType.String" Header="contactTitle" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Street" DataType="GridColumnDataType.String" Header="address street" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.City" DataType="GridColumnDataType.String" Header="address city" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Region" DataType="GridColumnDataType.String" Header="address region" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.PostalCode" DataType="GridColumnDataType.String" Header="address postalCode" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Country" DataType="GridColumnDataType.String" Header="address country" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="address phone" Sortable="true" Selectable="false"></IgbColumn>
+                </IgbGrid>
+            </IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    arrow_downward
+                </span>
+                <span>Column layout + grid</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content_4" tab_layout-scope>
+                @foreach (var item in _iGNorthwindAPIEmployeeDto)
+                {
+                    <IgbCard class="card_1" tab_layout-scope>
+                        <div class="group_3">
+                            <IgbCardHeader>
+                                <h3 slot="title">
+                                    @item.LastName
+                                </h3>
+                                <h5 slot="subtitle">
+                                    @item.Title
+                                </h5>
+                            </IgbCardHeader>
+                        </div>
+                        <IgbCardMedia class="media-content" tab_layout-scope>
+                            <img src="@item.AvatarUrl ?? default" class="image" />
+                        </IgbCardMedia>
+                    </IgbCard>
+                }
+            </IgbTabPanel>
+            <IgbTab>
+                <span class="material-icons">
+                    wrap_text
+                </span>
+                <span>Wrapping content</span>
+            </IgbTab>
+            <IgbTab>
+                <span class="material-icons">
+                    bar_chart
+                </span>
+                <span>Chart</span>
+            </IgbTab>
+            <IgbTabPanel class="row-layout tab-item-content_5" tab_layout-scope>
+                <IgbCategoryChart DataSource="@_financialSales" InitialGroups="Country" InitialSummaries="SUM(GrossSales), SUM(Profit), SUM(SalePrice), SUM(Sales)" GroupSorts="Country asc" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" tab_layout-scope></IgbCategoryChart>
+            </IgbTabPanel>
+        </IgbTabs>
+    </div>
+</div>
+
+@code {
+    private List<CustomerDto> _iGNorthwindAPICustomerDto = new();
+    private List<EmployeeDto> _iGNorthwindAPIEmployeeDto = new();
+    private List<SalesType> _financialSales = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iGNorthwindAPICustomerDto = await IG_NorthwindAPIService.GetCustomerDtoList();
+        _iGNorthwindAPIEmployeeDto = await IG_NorthwindAPIService.GetEmployeeDtoList();
+        _financialSales = await FinancialService.GetSales();
+        await base.OnInitializedAsync();
+    }
+}

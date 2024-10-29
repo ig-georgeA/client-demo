@@ -1,0 +1,118 @@
+@page "/pickers_combo"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+
+<div class="row-layout pickers-combo-container">
+    <div class="row-layout group">
+        <div class="column-layout group_1">
+            <p class="typography__subtitle-1 text">
+                Select
+            </p>
+            <IgbSelect Outlined="true" Label="Employees" Placeholder="Select a value" Value="@_value" Change="@(e => _value = e.Detail.Value)" class="user-input" pickers_combo-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        person
+                    </span>
+                </span>
+                @foreach (var item in _iGNorthwindAPIEmployeeDto)
+                {
+                    <IgbSelectItem Value="Option">
+                        @item.LastName
+                    </IgbSelectItem>
+                }
+            </IgbSelect>
+            <IgbSelect Outlined="false" Label="Label/Placeholder" Placeholder="pick a value" class="user-input" pickers_combo-scope>
+                <IgbSelectItem Value="Option">
+                    Option
+                </IgbSelectItem>
+            </IgbSelect>
+            <IgbSelect Outlined="true" Label="Label/Placeholder" Placeholder="pick a value" Value="@_value1" Change="@(e => _value1 = e.Detail.Value)" class="user-input" pickers_combo-scope>
+                <IgbSelectItem Value="1">
+                    Android
+                </IgbSelectItem>
+                <IgbSelectItem Value="2">
+                    iOS
+                </IgbSelectItem>
+                <IgbSelectItem Value="3">
+                    Web
+                </IgbSelectItem>
+            </IgbSelect>
+            <IgbSelect Outlined="true" Label="Options" Placeholder="Select a value" class="user-input" pickers_combo-scope>
+                <span slot="suffix">
+                    <span class="material-icons icon">
+                        date_range
+                    </span>
+                </span>
+                <IgbSelectItem Value="Option">
+                    Option
+                </IgbSelectItem>
+                <IgbSelectItem Value="Option">
+                    Option
+                </IgbSelectItem>
+                <IgbSelectItem Value="Option">
+                    Option
+                </IgbSelectItem>
+                <span slot="helper-text">Show help text here</span>
+            </IgbSelect>
+            <IgbSelect Outlined="false" Label="I have a label" Disabled="true" class="user-input" pickers_combo-scope>
+                <span slot="helper-text">disabled</span>
+            </IgbSelect>
+        </div>
+        <div class="column-layout group_1">
+            <p class="typography__subtitle-1 text">
+                Combo
+            </p>
+            <IgbCombo Outlined="true" Data="@_iGNorthwindAPICustomerDto" Label="Categories" Placeholder="no label + placeholder + multi_select" DisplayKey="CustomerId" T="object" class="user-input" pickers_combo-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        person
+                    </span>
+                </span>
+                <span slot="helper-text">sample hint text</span>
+            </IgbCombo>
+            <IgbCombo Outlined="true" Data="@_iGNorthwindAPICustomerDto" Label="Label/Placeholder" Placeholder="simple combo" DisplayKey="CompanyName" T="object" SingleSelect="true" class="user-input" pickers_combo-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        person
+                    </span>
+                </span>
+            </IgbCombo>
+            <IgbCombo Outlined="true" Data="@_iGNorthwindAPICustomerDto" Label="Description" Placeholder="disabled combo" Disabled="true" DisplayKey="CustomerId" T="object" class="user-input" pickers_combo-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        person
+                    </span>
+                </span>
+                <span slot="suffix">
+                    <span class="material-icons icon_1">
+                        warning
+                    </span>
+                </span>
+            </IgbCombo>
+            <IgbCombo Data="@_iGNorthwindAPIEmployeeDto" Label="Names" Placeholder="Box-style combo" DisplayKey="LastName" Required Outlined="false" T="object" SingleSelect="true" class="user-input" pickers_combo-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        person
+                    </span>
+                </span>
+            </IgbCombo>
+            <IgbCombo Data="@_iGNorthwindAPIEmployeeDto" Placeholder="Box-style combo + disabled" Disabled="true" DisplayKey="LastName" Required Outlined="false" T="object" SingleSelect="true" class="user-input" pickers_combo-scope></IgbCombo>
+            <IgbDatePicker Label="Date" class="date-picker" pickers_combo-scope></IgbDatePicker>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string _value = "2";
+    private List<EmployeeDto> _iGNorthwindAPIEmployeeDto = new();
+    private string _value1 = "3";
+    private List<CustomerDto> _iGNorthwindAPICustomerDto = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iGNorthwindAPIEmployeeDto = await IG_NorthwindAPIService.GetEmployeeDtoList();
+        _iGNorthwindAPICustomerDto = await IG_NorthwindAPIService.GetCustomerDtoList();
+        await base.OnInitializedAsync();
+    }
+}

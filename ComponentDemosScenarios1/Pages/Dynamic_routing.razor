@@ -1,0 +1,42 @@
+@page "/"
+@page "/dynamic_routing"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+
+<div class="row-layout dynamic-routing-container">
+    <IgbGrid Data="@_iGNorthwindAPICustomerDto" PrimaryKey="CustomerId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" dynamic_routing-scope>
+        <IgbColumn Field="CustomerId" DataType="GridColumnDataType.String" Header="customerId" Sortable="true" BodyTemplateScript="columnBodyTemplateScript" Selectable="false"></IgbColumn>
+        <IgbColumn Field="CompanyName" DataType="GridColumnDataType.String" Header="companyName" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="ContactName" DataType="GridColumnDataType.String" Header="contactName" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="ContactTitle" DataType="GridColumnDataType.String" Header="contactTitle" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="Address.Street" DataType="GridColumnDataType.String" Header="address street" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="Address.City" DataType="GridColumnDataType.String" Header="address city" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="Address.PostalCode" DataType="GridColumnDataType.String" Header="address postalCode" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="Address.Country" DataType="GridColumnDataType.String" Header="address country" Sortable="true" Selectable="false"></IgbColumn>
+        <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="address phone" Sortable="true" Selectable="false"></IgbColumn>
+    </IgbGrid>
+</div>
+
+@code {
+    private List<CustomerDto> _iGNorthwindAPICustomerDto = new();
+    private IJSObjectReference module;
+    private DotNetObjectReference<Dynamic_routing> objRef;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iGNorthwindAPICustomerDto = await IG_NorthwindAPIService.GetCustomerDtoList();
+        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Pages/Dynamic_routing.razor.js");
+        objRef = DotNetObjectReference.Create(this);
+        await JS.InvokeAsync<string>("setDotNetRef", objRef);
+        await base.OnInitializedAsync();
+    }
+
+    [JSInvokable]
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

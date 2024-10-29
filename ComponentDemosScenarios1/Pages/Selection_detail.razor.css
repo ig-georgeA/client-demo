@@ -1,0 +1,123 @@
+.row-layout {
+    display: flex;
+}
+.selection-detail-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow: auto;
+    position: relative;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 32px;
+    position: relative;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_2 {
+    background-color: hsla(var(--ig-gray-100));
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 4px;
+    padding: 32px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.group_3 {
+    border-color: hsla(var(--ig-gray-300));
+    border-width: 0px 0px 1px;
+    border-style: solid;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 8px;
+    min-width: 50px;
+}
+.list {
+    height: max-content;
+}
+.grid {
+    --ig-size: var(--ig-size-medium);
+    min-width: 600px;
+    min-height: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.list_1 {
+    width: max-content;
+    height: max-content;
+}
+.select {
+    height: max-content;
+    min-width: min-content;
+}
+.single-select-combo {
+    width: 350px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 350px;
+}
+.button {
+    --ig-size: var(--ig-size-medium);
+    height: max-content;
+}
+.avatar {
+    --ig-size: var(--ig-size-medium);
+    margin: 0 0 16px;
+}
+.content {
+    height: max-content;
+    min-width: min-content;
+}
+.avatar_1 {
+    --ig-size: var(--ig-size-small);
+}
+.icon {
+    color: hsla(var(--ig-secondary-500));
+}
+.avatar_2::part(base) {
+    background-color: hsla(var(--ig-gray-300));
+}
+.avatar_1_1::part(base) {
+    color: hsla(var(--ig-secondary-500));
+    background-color: transparent;
+}
+.avatar_1_2::part(base) {
+    color: hsla(var(--ig-secondary-500));
+    background-color: transparent;
+}
+.avatar_1_3::part(base) {
+    color: hsla(var(--ig-secondary-500));
+    background-color: transparent;
+}
+.avatar_1_4::part(base) {
+    color: hsla(var(--ig-secondary-500));
+    background-color: transparent;
+}
+.avatar_1_5::part(base) {
+    color: hsla(var(--ig-secondary-500));
+    background-color: transparent;
+}

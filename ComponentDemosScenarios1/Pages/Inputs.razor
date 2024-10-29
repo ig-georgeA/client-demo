@@ -1,0 +1,367 @@
+@page "/inputs"
+@using Northwind
+@using Models.Northwind
+@inject NavigationManager NavigationManager
+@inject INorthwindService NorthwindService
+
+<div class="row-layout inputs-container">
+    <div class="column-layout column-layout_1">
+        <IgbInput DisplayType="InputType.Email" Label="Email address" Required Outlined="false" class="input" inputs-scope>
+            <span slot="prefix">
+                <span class="material-icons icon">
+                    mail
+                </span>
+            </span>
+        </IgbInput>
+        <IgbInput Label="I'm disabled" Disabled="true" Required Outlined="false" class="input" inputs-scope></IgbInput>
+        <IgbInput Label="Label +prefix+box+help" Required Outlined="false" class="input" inputs-scope>
+            <span slot="prefix">
+                <span class="material-icons icon">
+                    person
+                </span>
+            </span>
+            <span slot="helper-text">sample hint text</span>
+        </IgbInput>
+        <IgbInput Label="Label" Placeholder="Label/Placeholder" Required Outlined="false" class="input" inputs-scope></IgbInput>
+        <IgbDatePicker Label="Date-box style-input format 1" Required @bind-Value="@_value" class="date-picker" inputs-scope></IgbDatePicker>
+        <IgbDatePicker Label="Date-box style - input format 2" Required @bind-Value="@_value" class="date-picker" inputs-scope></IgbDatePicker>
+        <IgbTextarea Placeholder="Type here" Required Outlined="false" class="textarea" inputs-scope></IgbTextarea>
+        <IgbDatePicker Label="Date picker" class="date-picker_1" inputs-scope></IgbDatePicker>
+        <div class="row-layout group">
+            <IgbChip class="chip" inputs-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon_1">
+                        place
+                    </span>
+                </span>
+                Country
+            </IgbChip>
+            <IgbChip class="chip" inputs-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon_1">
+                        place
+                    </span>
+                </span>
+                Country
+            </IgbChip>
+            <IgbChip class="chip_1" inputs-scope>
+                <span slot="prefix">
+                    <IgbAvatar Shape="AvatarShape.Circle" class="avatar" inputs-scope>
+                        <span class="material-icons icon_2">
+                            people
+                        </span>
+                    </IgbAvatar>
+                </span>
+                <span slot="suffix">
+                    <span class="material-icons icon_1">
+                        clear
+                    </span>
+                </span>
+                Country
+            </IgbChip>
+            <IgbChip Disabled="true" class="chip_1" inputs-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon_1">
+                        account_balance
+                    </span>
+                </span>
+                <span slot="suffix">
+                    <span class="material-icons icon_1">
+                        clear
+                    </span>
+                </span>
+                Country
+            </IgbChip>
+        </div>
+        <div class="row-layout group_1">
+            <IgbChip class="chip_2" inputs-scope>
+                <span slot="prefix">
+                    <IgbAvatar Initials="AB" Shape="AvatarShape.Circle" class="avatar_4" inputs-scope></IgbAvatar>
+                </span>
+                Country
+            </IgbChip>
+        </div>
+        <div class="column-layout group_2">
+            <IgbSlider Min="0" Max="100" Value="@_value1" Change="@(e => _value1 = e.Detail)" class="slider" inputs-scope></IgbSlider>
+            <IgbRangeSlider Lower="20" Upper="80" Min="0" Max="100" Step="10" DiscreteTrack="true" class="range-slider" inputs-scope></IgbRangeSlider>
+            <IgbSlider Disabled="true" Min="0" Max="100" PrimaryTicks="3" SecondaryTicks="2" HideSecondaryLabels="false" Value="@_value2" Change="@(e => _value2 = e.Detail)" class="slider" inputs-scope></IgbSlider>
+            <IgbSlider Min="0" Max="100" Step="10" PrimaryTicks="5" DiscreteTrack="true" Value="@_value1" Change="@(e => _value1 = e.Detail)" class="slider_1" inputs-scope></IgbSlider>
+            <IgbSlider Min="0" Max="100" Step="10" PrimaryTicks="3" SecondaryTicks="1" TickOrientation="SliderBaseTickOrientation.Mirror" DiscreteTrack="true" Value="@_value3" Change="@(e => _value3 = e.Detail)" class="slider" inputs-scope></IgbSlider>
+        </div>
+        <div class="row-layout group_3">
+            <IgbAvatar Initials="GM" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_1" inputs-scope></IgbAvatar>
+            <IgbAvatar Src="assets/Avatar2.png" class="avatar_2 avatar_2_1" inputs-scope></IgbAvatar>
+            <IgbAvatar Shape="AvatarShape.Circle" class="avatar_3" inputs-scope>
+                <span class="material-icons">
+                    people
+                </span>
+            </IgbAvatar>
+        </div>
+        <div class="row-layout group_4">
+            <span class="material-icons icon_1">
+                person
+            </span>
+            <span class="material-icons icon_3">
+                person
+            </span>
+            <span class="material-icons icon_4">
+                person
+            </span>
+            <span class="material-icons icon_5">
+                person
+            </span>
+            <IgbRating HoverPreview="true" Value="@_value4" Change="@(e => _value4 = e.Detail)" class="rating" inputs-scope></IgbRating>
+        </div>
+    </div>
+    <div class="column-layout group_5">
+        <IgbInput Label="Label" Placeholder="Label + prefix + suffix + border" Required Outlined="true" class="input" inputs-scope>
+            <span slot="prefix">
+                <p class="typography__body-2 text">
+                    https://
+                </p>
+            </span>
+            <span slot="suffix">
+                <p class="typography__body-2 text">
+                    .com
+                </p>
+            </span>
+        </IgbInput>
+        <IgbInput Label="Label + required" Required Outlined="true" Value="@_value5" Change="@(e => _value5 = e.Detail.ToString())" class="input" inputs-scope></IgbInput>
+        <IgbInput Label="I'm disabled" Disabled="true" Required Outlined="true" class="input" inputs-scope></IgbInput>
+        <IgbInput Label="Label" Required Outlined="true" class="input" inputs-scope></IgbInput>
+        <IgbInput Label="Prefix, helptext and border" Required Outlined="true" class="input_1" inputs-scope>
+            <span slot="prefix">
+                <span class="material-icons icon">
+                    person
+                </span>
+            </span>
+            <span slot="helper-text">sample hint text</span>
+        </IgbInput>
+        <IgbDatePicker Label="Date picker" class="date-picker_1" inputs-scope></IgbDatePicker>
+        <IgbDatePicker Label="Date picker 2" @bind-Value="@_value6" class="date-picker_1" inputs-scope></IgbDatePicker>
+        <IgbDatePicker Label="Date editor" Required @bind-Value="@_value" class="date-picker" inputs-scope></IgbDatePicker>
+        <IgbDatePicker Label="Time editor" Required @bind-Value="@_value" class="date-picker" inputs-scope></IgbDatePicker>
+        <div class="row-layout group_6">
+            <IgbButton @onclick="@(e => Navigate("/lists_data"))" class="button" inputs-scope>
+                <span class="material-icons">
+                    star
+                </span>
+                <span>Lists</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Outlined" class="button_1" inputs-scope>
+                <span class="material-icons">
+                    add
+                </span>
+                <span>Button</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" class="button_1" inputs-scope>
+                <span>Button</span>
+                <span class="material-icons">
+                    add
+                </span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Outlined" Disabled="true" class="button_1" inputs-scope>
+                <span class="material-icons">
+                    add
+                </span>
+                <span>Button</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbIconButton Variant="IconButtonVariant.Flat" class="icon-button icon-button_2" inputs-scope>
+                <span class="material-icons">
+                    edit_calendar
+                </span>
+                <IgbRipple></IgbRipple>
+            </IgbIconButton>
+            <IgbIconButton Variant="IconButtonVariant.Flat" class="icon-button icon-button_3" inputs-scope>
+                <span class="material-icons icon_6">
+                    edit_calendar
+                </span>
+                <IgbRipple></IgbRipple>
+            </IgbIconButton>
+            <IgbButton Variant="ButtonVariant.Fab" class="user-input" inputs-scope>
+                <span class="material-icons">
+                    add
+                </span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <div class="row-layout group_7">
+                <div class="row-layout group_8">
+                    <IgbIconButton Variant="IconButtonVariant.Flat" class="icon-button_1" inputs-scope>
+                        <span class="material-icons">
+                            email
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbIconButton>
+                    <IgbBadge Variant="StyleVariant.Success" class="badge" inputs-scope>
+                        <span class="material-icons">
+                            check
+                        </span>
+                    </IgbBadge>
+                </div>
+                <div class="row-layout group_8">
+                    <IgbAvatar Src="assets/Avatar2.png" Shape="AvatarShape.Circle" class="avatar_3 avatar_3_1" inputs-scope></IgbAvatar>
+                    <IgbBadge Variant="StyleVariant.Warning" class="badge_1" inputs-scope>
+                        <span class="material-icons">
+                            thumb_up
+                        </span>
+                    </IgbBadge>
+                </div>
+                <div class="row-layout group_8">
+                    <span class="material-icons icon_3">
+                        mail
+                    </span>
+                    <IgbBadge Variant="StyleVariant.Danger" class="badge" inputs-scope>
+                        999
+                    </IgbBadge>
+                </div>
+                <div class="row-layout group_8">
+                    <span class="material-icons icon_3">
+                        notifications
+                    </span>
+                    <IgbBadge Variant="StyleVariant.Danger" class="badge_2" inputs-scope></IgbBadge>
+                </div>
+                <IgbBadge Variant="StyleVariant.Success" class="badge_3" inputs-scope>
+                    Accepted
+                </IgbBadge>
+                <IgbBadge Variant="StyleVariant.Danger" class="badge_3" inputs-scope>
+                    Denied
+                </IgbBadge>
+                <div class="row-layout group_8">
+                    <IgbIconButton Variant="IconButtonVariant.Flat" class="icon-button_1" inputs-scope>
+                        <span class="material-icons">
+                            email
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbIconButton>
+                    <IgbBadge Variant="StyleVariant.Danger" class="badge_4" inputs-scope></IgbBadge>
+                </div>
+            </div>
+            <a href="https://www.youtube.com/playlist?list=PLZ4rRHIJepBuKeP2WqXZUtG8LAYmyHHsa" class="typography__body-1 hyperlink">
+                YouTube playlist
+            </a>
+        </div>
+        <div class="column-layout group_9">
+            <div class="row-layout group_10">
+                <IgbButtonGroup class="button-group" inputs-scope>
+                    <IgbToggleButton>
+                        <span class="material-icons">
+                            format_align_left
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                    <IgbToggleButton>
+                        <span class="material-icons">
+                            format_align_center
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                    <IgbToggleButton>
+                        <span class="material-icons">
+                            format_align_right
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                </IgbButtonGroup>
+                <IgbButtonGroup class="button-group_1" inputs-scope>
+                    <IgbToggleButton>
+                        <span class="material-icons">
+                            format_bold
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                    <IgbToggleButton Disabled="true">
+                        <span class="material-icons">
+                            format_italic
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                    <IgbToggleButton Disabled="true">
+                        <span class="material-icons">
+                            format_underlined
+                        </span>
+                        <IgbRipple></IgbRipple>
+                    </IgbToggleButton>
+                </IgbButtonGroup>
+                <IgbSwitch @bind-Checked="@_checked" class="user-input_1" inputs-scope>
+                    Notify me
+                </IgbSwitch>
+                <IgbSwitch @bind-Checked="@_checked" class="user-input_1" inputs-scope></IgbSwitch>
+            </div>
+            <div class="row-layout group_11">
+                <IgbCheckbox @bind-Checked="@_checked" class="checkbox" inputs-scope></IgbCheckbox>
+                <IgbCheckbox LabelPosition="CheckboxBaseLabelPosition.After" @bind-Checked="@_checked" class="checkbox" inputs-scope>
+                    Does it work?
+                </IgbCheckbox>
+                <IgbCheckbox LabelPosition="CheckboxBaseLabelPosition.Before" @bind-Checked="@_checked" class="user-input" inputs-scope>
+                    How about now?
+                </IgbCheckbox>
+            </div>
+        </div>
+        <div class="row-layout group_12">
+            <IgbRadioGroup value="@_value7" Change="@(e => _value7 = e.Detail.Value)" class="radio-group" inputs-scope>
+                <IgbRadio Value="1" class="radio" inputs-scope>
+                    Label
+                </IgbRadio>
+                <IgbRadio Value="2" class="radio" inputs-scope>
+                    Label
+                </IgbRadio>
+                <IgbRadio Value="3" class="radio" inputs-scope>
+                    Label
+                </IgbRadio>
+            </IgbRadioGroup>
+            <IgbRadioGroup Alignment="RadioGroupAlignment.Horizontal" value="@_value7" Change="@(e => _value7 = e.Detail.Value)" class="user-input_1" inputs-scope>
+                @foreach (var item in _northwindCategories)
+                {
+                    <IgbRadio Value="1" class="radio" inputs-scope>
+                        Label
+                    </IgbRadio>
+                }
+                <IgbRadio Value="2" class="radio" inputs-scope>
+                    Label
+                </IgbRadio>
+                <IgbRadio Value="3" class="radio" inputs-scope>
+                    Label
+                </IgbRadio>
+            </IgbRadioGroup>
+        </div>
+        <div class="row-layout group_13">
+            <IgbInput Label="Group name" Required Outlined="true" Value="@_value5" Change="@(e => _value5 = e.Detail.ToString())" class="input_2" inputs-scope></IgbInput>
+            <IgbButton Variant="ButtonVariant.Outlined" class="button_2" inputs-scope>
+                <span class="material-icons">
+                    check
+                </span>
+                <span>Submit</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+        <IgbDatePicker Label="Date" class="date-picker_1" inputs-scope></IgbDatePicker>
+    </div>
+</div>
+
+@code {
+    private DateTime _value = DateTime.Parse("2021-03-16T00:00");
+    private double _value1 = 50;
+    private double _value2 = 25;
+    private double _value3 = 0;
+    private double _value4 = 3;
+    private string _value5 = "some content";
+    private DateTime _value6 = DateTime.Parse("2024-06-12T00:00");
+    private bool _checked = true;
+    private string _value7 = "1";
+    private List<CategoriesType> _northwindCategories = new();
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _northwindCategories = await NorthwindService.GetCategories();
+        await base.OnInitializedAsync();
+    }
+}

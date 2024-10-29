@@ -1,0 +1,204 @@
+@page "/selection_detail"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@using System.Reactive.Subjects
+@using System.Reactive.Linq
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+@implements IDisposable;
+
+<div class="row-layout selection-detail-container">
+    <div class="column-layout group">
+        <IgbList class="list" selection_detail-scope>
+            @foreach (var item in _iGNorthwindAPICustomerDto)
+            {
+                <IgbListItem @onclick="() => ListItemClick(item)">
+                    <div slot="title">@item.CompanyName</div>
+                    <div slot="subtitle">@item.CustomerId</div>
+                </IgbListItem>
+            }
+        </IgbList>
+    </div>
+    <div class="column-layout group_1">
+        <IgbSelect Outlined="true" Label="selected customer" Value="@(VarCustomer.CustomerId ?? default)" class="select" selection_detail-scope>
+            @foreach (var item in _iGNorthwindAPICustomerDto)
+            {
+                <IgbSelectItem Value="@item.CustomerId ?? default">
+                    @item.CustomerId
+                </IgbSelectItem>
+            }
+        </IgbSelect>
+        @if (_singleSelectComboVisible1)
+        {
+            <IgbCombo Outlined="true" Label="Label/Placeholder" DisplayKey="CustomerId" T="object" SingleSelect="true" class="single-select-combo" selection_detail-scope></IgbCombo>
+        }
+        <div class="column-layout group_2">
+            <IgbAvatar Shape="AvatarShape.Rounded" @onclick="@(e => _dialog1!.ToggleAsync())" class="avatar avatar_2" selection_detail-scope></IgbAvatar>
+            <h4 class="content">
+                @VarCustomer.CustomerId
+            </h4>
+            <h6 class="content">
+                @VarCustomer.CompanyName
+            </h6>
+            <div class="row-layout group_3">
+                <p class="typography__caption content">
+                    @VarCustomer.Address?.Street
+                </p>
+                <p class="typography__caption content">
+                    @VarCustomer.Address?.City
+                </p>
+                <p class="typography__caption content">
+                    @VarCustomer.Address?.Country
+                </p>
+            </div>
+        </div>
+        <IgbGrid Data="@_iGNorthwindAPIOrderDto" PrimaryKey="OrderId" RowSelection="GridSelectionMode.Single" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" RowSelectionChanging="GridRowSelectionChanging" class="ig-typography grid" selection_detail-scope>
+            <IgbColumn Field="OrderId" DataType="GridColumnDataType.Number" Header="orderId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="CustomerId" DataType="GridColumnDataType.String" Header="customerId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="EmployeeId" DataType="GridColumnDataType.Number" Header="employeeId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipperId" DataType="GridColumnDataType.Number" Header="shipperId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="OrderDate" DataType="GridColumnDataType.Date" Header="orderDate" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="RequiredDate" DataType="GridColumnDataType.Date" Header="requiredDate" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipVia" DataType="GridColumnDataType.String" Header="shipVia" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Freight" DataType="GridColumnDataType.Number" Header="freight" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipName" DataType="GridColumnDataType.String" Header="shipName" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Completed" DataType="GridColumnDataType.Boolean" Header="completed" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.Street" DataType="GridColumnDataType.String" Header="shipAddress street" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.City" DataType="GridColumnDataType.String" Header="shipAddress city" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.Region" DataType="GridColumnDataType.String" Header="shipAddress region" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.PostalCode" DataType="GridColumnDataType.String" Header="shipAddress postalCode" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.Country" DataType="GridColumnDataType.String" Header="shipAddress country" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ShipAddress.Phone" DataType="GridColumnDataType.String" Header="shipAddress phone" Sortable="true" Selectable="false"></IgbColumn>
+        </IgbGrid>
+        <IgbGrid Data="@_iGNorthwindAPIOrderDetailDto" PrimaryKey="OrderId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" selection_detail-scope>
+            <IgbColumn Field="OrderId" DataType="GridColumnDataType.Number" Header="orderId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="ProductId" DataType="GridColumnDataType.Number" Header="productId" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="UnitPrice" DataType="GridColumnDataType.Number" Header="unitPrice" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Quantity" DataType="GridColumnDataType.Number" Header="quantity" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Discount" DataType="GridColumnDataType.Number" Header="discount" Sortable="true" Selectable="false"></IgbColumn>
+        </IgbGrid>
+    </div>
+    <IgbDialog CloseOnOutsideClick="true" @ref="_dialog1">
+        <h5 slot="title">
+            Using variables in your app
+        </h5>
+        <IgbList class="list_1" selection_detail-scope>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_1" selection_detail-scope>
+                    <span class="material-icons icon">
+                        looks_one
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Create variables</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_2" selection_detail-scope>
+                    <span class="material-icons icon">
+                        looks_two
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Update variable value</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_3" selection_detail-scope>
+                    <span class="material-icons icon">
+                        looks_3
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Variable in API request</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_4" selection_detail-scope>
+                    <span class="material-icons icon">
+                        looks_4
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Bind component property to variable</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1 avatar_1_5" selection_detail-scope>
+                    <span class="material-icons icon">
+                        looks_5
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Manage variables</div>
+            </IgbListItem>
+        </IgbList>
+        <div slot="footer">
+            <IgbButton @onclick="@(e => _dialog1!.ToggleAsync())" class="button" selection_detail-scope>
+                OK. Got it!
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </IgbDialog>
+</div>
+
+@code {
+    private CustomerDto _varCustomer;
+    public CustomerDto VarCustomer
+    {
+        get => _varCustomer;
+        set
+        {
+            _varCustomer = value;
+            _iGNorthwindAPIOrderDtoSubject.OnNext(value);
+            _varOrderID1 = null;
+        }
+    }
+
+    private double? __varOrderID1 = 10265;
+    public double? _varOrderID1
+    {
+        get => __varOrderID1;
+        set
+        {
+            __varOrderID1 = value;
+            _iGNorthwindAPIOrderDetailDtoSubject.OnNext(value);
+        }
+    }
+
+    private List<CustomerDto> _iGNorthwindAPICustomerDto = new();
+    private bool _singleSelectComboVisible1 = false;
+    private List<OrderDto> _iGNorthwindAPIOrderDto = new();
+    private Subject<object> _iGNorthwindAPIOrderDtoSubject = new Subject<object>();
+
+    private List<OrderDetailDto> _iGNorthwindAPIOrderDetailDto = new();
+    private Subject<object> _iGNorthwindAPIOrderDetailDtoSubject = new Subject<object>();
+
+    private IgbDialog _dialog1;
+    private Subject<object> destroy = new();
+
+    public void ListItemClick(CustomerDto item)
+    {
+        this.VarCustomer = item;
+    }
+
+    public void GridRowSelectionChanging(IgbRowSelectionEventArgs e)
+    {
+        this._varOrderID1 = (e.Detail.NewSelection.FirstOrDefault() as OrderDto)?.OrderId;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        VarCustomer = await IG_NorthwindAPIService.GetCustomerDto("BLONP");
+        _iGNorthwindAPICustomerDto = await IG_NorthwindAPIService.GetCustomerDtoList();
+        _iGNorthwindAPIOrderDto = await IG_NorthwindAPIService.GetOrderDtoList(VarCustomer?.CustomerId);
+        _iGNorthwindAPIOrderDtoSubject.TakeUntil(this.destroy).Subscribe(async _ =>
+        {
+            _iGNorthwindAPIOrderDto = await IG_NorthwindAPIService.GetOrderDtoList(VarCustomer?.CustomerId);
+            await InvokeAsync(StateHasChanged);
+        });
+        _iGNorthwindAPIOrderDetailDto = await IG_NorthwindAPIService.GetOrderDetailDtoList((int)_varOrderID1);
+        _iGNorthwindAPIOrderDetailDtoSubject.TakeUntil(this.destroy).Subscribe(async _ =>
+        {
+            _iGNorthwindAPIOrderDetailDto = await IG_NorthwindAPIService.GetOrderDetailDtoList((int)_varOrderID1);
+            await InvokeAsync(StateHasChanged);
+        });
+        await base.OnInitializedAsync();
+    }
+
+    public void Dispose()
+    {
+        this.destroy.OnNext(null);
+        this.destroy.Dispose();
+    }
+}

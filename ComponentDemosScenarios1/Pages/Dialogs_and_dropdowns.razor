@@ -1,0 +1,261 @@
+@page "/dialogs_and_dropdowns"
+
+<div class="column-layout dialogs-and-dropdowns-container">
+    <div class="row-layout group">
+        <div class="column-layout group_1">
+            <IgbButton @onclick="@(e => _alert!.ToggleAsync())" class="button" dialogs_and_dropdowns-scope>
+                <span class="material-icons">
+                    open_in_new
+                </span>
+                <span>Open alert dialog</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton @onclick="@(e => _confirm!.ToggleAsync())" class="button" dialogs_and_dropdowns-scope>
+                <span class="material-icons">
+                    open_in_new
+                </span>
+                <span>Open confirmation dialog</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+        <div class="row-layout group_2">
+            <IgbButton @onclick="@(e => _customContentDialog!.ToggleAsync())" class="button_1" dialogs_and_dropdowns-scope>
+                <span class="material-icons">
+                    open_in_new
+                </span>
+                <span>Open custom dialog</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+        <div class="column-layout group_3">
+            <h3 class="h3">
+                Demo zone
+            </h3>
+            <span class="notification">Banner not yet available in Blazor</span>
+            <span class="notification">Banner not yet available in Blazor</span>
+        </div>
+    </div>
+    <div class="row-layout group">
+        <div class="row-layout group_4">
+            <IgbButton @onclick="@(e => _snackbar!.ToggleAsync())" class="button_1" dialogs_and_dropdowns-scope>
+                <span class="material-icons">
+                    open_in_new
+                </span>
+                <span>Open snackbar</span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+        <div class="column-layout group_5">
+            <span class="banner-inside">Banner not yet available in Blazor</span>
+            <div class="column-layout group_6">
+                <IgbButton class="button" dialogs_and_dropdowns-scope>
+                    <span class="material-icons">
+                        open_in_new
+                    </span>
+                    <span>Open banner (inside)</span>
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+                <IgbButton class="button" dialogs_and_dropdowns-scope>
+                    <span class="material-icons">
+                        open_in_new
+                    </span>
+                    <span>Open banner (outside)</span>
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+            </div>
+        </div>
+        <div class="row-layout group_7">
+            <IgbButton @ref="_confirmDetilas" @onclick="@(e => _dropdown!.ToggleAsync(_confirmDetilas))" class="button_1" dialogs_and_dropdowns-scope>
+                <span>More options</span>
+                <span class="material-icons">
+                    expand_more
+                </span>
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton @ref="_button" @onclick="@(e => _dropdown!.ToggleAsync(_button))" class="button_1" dialogs_and_dropdowns-scope>
+                Button
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbDropdown @ref="_dropdown" class="dropdown dropdown_2" dialogs_and_dropdowns-scope>
+                <IgbDropdownHeader>
+                    Header 1
+                </IgbDropdownHeader>
+                <IgbDropdownItem>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            content_cut
+                        </span>
+                    </span>
+                    <span slot="suffix">
+                        <p class="typography__caption text">
+                            Cmd + X
+                        </p>
+                    </span>
+                    Cut
+                </IgbDropdownItem>
+                <IgbDropdownItem>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            content_copy
+                        </span>
+                    </span>
+                    <span slot="suffix">
+                        <p class="typography__caption text">
+                            Cmd + C
+                        </p>
+                    </span>
+                    Copy
+                </IgbDropdownItem>
+                <IgbDropdownItem>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            content_paste
+                        </span>
+                    </span>
+                    <span slot="suffix">
+                        <p class="typography__caption text">
+                            Cmd + V
+                        </p>
+                    </span>
+                    Paste
+                </IgbDropdownItem>
+                <IgbDropdownHeader>
+                    Header 2
+                </IgbDropdownHeader>
+                <IgbDropdownItem>
+                    <span slot="prefix"></span>
+                    Option 2.1
+                </IgbDropdownItem>
+                <IgbDropdownItem>
+                    Option 2.2
+                </IgbDropdownItem>
+            </IgbDropdown>
+        </div>
+    </div>
+    <IgbDialog CloseOnOutsideClick="true" @ref="_alert">
+        <p>In this accelerator, we'll show you how to use various controls for alerts, pop-up messages, data entry screens, and more in App Builder.</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" @onclick="@(e => _alert!.ToggleAsync())">
+                Cancel
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" @onclick="@(e => _alert!.ToggleAsync())">
+                OK
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" @ref="_confirm">
+        <h5 slot="title">
+            Show custom dialog?
+        </h5>
+        <p>In this accelerator, we'll show you how to use various controls for alerts, pop-up messages, data entry screens, and more in App Builder.</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" @onclick="@(e => _confirm!.ToggleAsync())">
+                Cancel
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" @onclick="@(e => _customContentDialog!.ToggleAsync())">
+                Show me
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" @ref="_customContentDialog">
+        <h5 slot="title">
+            Dialog with custom content
+        </h5>
+        @if (_groupVisible)
+        {
+            <div class="row-layout custom-header">
+                <h4 class="content">
+                    My custom title
+                </h4>
+                <IgbIconButton Variant="IconButtonVariant.Flat" @onclick="@(e => _customContentDialog!.ToggleAsync())" class="icon-button" dialogs_and_dropdowns-scope>
+                    <span class="material-icons">
+                        close
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </IgbIconButton>
+            </div>
+        }
+        <div class="column-layout custom-content">
+            <span class="notification">Banner not yet available in Blazor</span>
+            <img src="assets/SketchParser.png" class="image" />
+            <p class="typography__body-1 content">
+                Use the Ignite UI Dialog Window component to display messages or present forms for users to fill out. The component opens a dialog window centered on top of app content. You can also provide a standard alert message that users can cancel.
+            </p>
+            <div class="column-layout form-fields">
+                <IgbInput Label="Email" Required Outlined="true" class="input" dialogs_and_dropdowns-scope></IgbInput>
+                <IgbInput Label="Name" Required Outlined="true" class="input" dialogs_and_dropdowns-scope></IgbInput>
+                @if (_groupVisible1)
+                {
+                    <div class="row-layout custom-actions">
+                        <IgbButton Variant="ButtonVariant.Flat" @ref="_button1" @onclick="@(e => _dropdown1!.ToggleAsync(_button1))" class="button_1" dialogs_and_dropdowns-scope>
+                            <span>Options</span>
+                            <span class="material-icons">
+                                keyboard_arrow_down
+                            </span>
+                            <IgbRipple></IgbRipple>
+                        </IgbButton>
+                        <div class="row-layout group_8">
+                            <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => _customContentDialog!.ToggleAsync())" class="button_1" dialogs_and_dropdowns-scope>
+                                Cancel
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                            <IgbButton @onclick="@(e => _customContentDialog!.ToggleAsync())" class="button_1" dialogs_and_dropdowns-scope>
+                                Custom save
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                        </div>
+                        <IgbDropdown @ref="_dropdown1" class="dropdown_1 dropdown_1_1" dialogs_and_dropdowns-scope>
+                            <IgbDropdownItem>
+                                Option
+                            </IgbDropdownItem>
+                            <IgbDropdownItem>
+                                Option
+                            </IgbDropdownItem>
+                            <IgbDropdownItem>
+                                Option
+                            </IgbDropdownItem>
+                            <IgbDropdownItem>
+                                Option
+                            </IgbDropdownItem>
+                        </IgbDropdown>
+                    </div>
+                }
+            </div>
+        </div>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" @onclick="@(e => _customContentDialog!.ToggleAsync())" class="button" dialogs_and_dropdowns-scope>
+                Close
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton class="button" dialogs_and_dropdowns-scope>
+                Save
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </IgbDialog>
+    <span class="notification">Banner not yet available in Blazor</span>
+    <IgbSnackbar class="notification" dialogs_and_dropdowns-scope>
+        Webinar demo
+    </IgbSnackbar>
+    <IgbSnackbar ActionText="OK. Got it!" Action="@(e => _snackbar!.ToggleAsync())" @ref="_snackbar" class="snackbar" dialogs_and_dropdowns-scope>
+        Read quickly. I'll disappear in 4s!
+    </IgbSnackbar>
+</div>
+
+@code {
+    private IgbButton _confirmDetilas;
+    private IgbButton _button;
+    private IgbDropdown _dropdown;
+    private IgbDialog _alert;
+    private IgbDialog _confirm;
+    private IgbDialog _customContentDialog;
+    private bool _groupVisible = false;
+    private bool _groupVisible1 = false;
+    private IgbButton _button1;
+    private IgbDropdown _dropdown1;
+    private IgbSnackbar _snackbar;
+}

@@ -1,0 +1,157 @@
+@page "/lists_data"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@inject NavigationManager NavigationManager
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+
+<div class="column-layout lists-data-container">
+    <div class="row-layout group">
+        @foreach (var item in _iGNorthwindAPIEmployeeDto)
+        {
+            <IgbCard class="card" lists_data-scope>
+                <div class="group_1">
+                    <IgbCardHeader>
+                        <h3 slot="title">
+                            @item.LastName
+                        </h3>
+                        <h5 slot="subtitle">
+                            @item.Title
+                        </h5>
+                    </IgbCardHeader>
+                    <IgbCardActions class="actions-content" lists_data-scope>
+                        <IgbButton Variant="ButtonVariant.Flat" slot="start" @onclick="@(e => Navigate("/layouts"))" class="button" lists_data-scope>
+                            Details
+                            <IgbRipple></IgbRipple>
+                        </IgbButton>
+                    </IgbCardActions>
+                </div>
+                <IgbCardMedia class="media-content" lists_data-scope>
+                    <img src="@item.AvatarUrl ?? default" class="image" />
+                </IgbCardMedia>
+            </IgbCard>
+        }
+    </div>
+    <div class="row-layout group_2">
+        <IgbList class="list" lists_data-scope>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        home
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Home</div>
+                <div slot="subtitle">Subtitle...</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        business
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Accounts</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        person_outline
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Contacts</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        inbox
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Contracts</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        bar_chart
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Reports</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        calendar_today
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Calendar</div>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope>
+                    <span class="material-icons">
+                        assignment_turned_in
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Tasks</div>
+            </IgbListItem>
+        </IgbList>
+        <div class="column-layout group_3">
+            <IgbList class="list_1" lists_data-scope>
+                @foreach (var item in _iGNorthwindAPIEmployeeDto)
+                {
+                    <IgbListItem>
+                        <IgbAvatar Src="@item.AvatarUrl ?? default" slot="start" Shape="AvatarShape.Circle" class="avatar" lists_data-scope></IgbAvatar>
+                        <div slot="title">@item.LastName</div>
+                        <div slot="subtitle">@item.Title</div>
+                        <span slot="end" class="material-icons icon">
+                            keyboard_arrow_right
+                        </span>
+                    </IgbListItem>
+                }
+            </IgbList>
+        </div>
+        <div class="column-layout group_3">
+            <IgbList class="list_1" lists_data-scope>
+                @foreach (var item in _iGNorthwindAPIEmployeeDto)
+                {
+                    <IgbListItem>
+                        <IgbAvatar Src="@item.AvatarUrl ?? default" Shape="AvatarShape.Rounded" slot="start" class="avatar_1" lists_data-scope></IgbAvatar>
+                        <div slot="title">@item.FirstName</div>
+                        <div slot="subtitle">@item.Title</div>
+                        <div>
+                            <div class="row-layout group_4">
+                                <div class="column-layout group_5">
+                                    <p class="typography__caption text">
+                                        Birthday
+                                    </p>
+                                    <p class="typography__caption text_1">
+                                        @item.BirthDate
+                                    </p>
+                                </div>
+                                <div class="column-layout group_5">
+                                    <p class="typography__caption text">
+                                        Country
+                                    </p>
+                                    <p class="typography__caption text_1">
+                                        @item.Address?.Country
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </IgbListItem>
+                }
+            </IgbList>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<EmployeeDto> _iGNorthwindAPIEmployeeDto = new();
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iGNorthwindAPIEmployeeDto = await IG_NorthwindAPIService.GetEmployeeDtoList();
+        await base.OnInitializedAsync();
+    }
+}

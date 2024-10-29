@@ -1,0 +1,265 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="column-layout main-navigation-container">
+    <IgbNavbar class="navbar" main_navigation-scope>
+        <IgbIconButton slot="start" Variant="IconButtonVariant.Flat" @onclick="@(e => _navDrawer!.ToggleAsync())" class="icon-button" main_navigation-scope>
+            <span class="material-icons">
+                menu
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbIconButton>
+        <div class="row-layout group">
+            <h6 class="h6">
+                App builder demos
+            </h6>
+        </div>
+        <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" main_navigation-scope>
+            <span class="material-icons">
+                addchart
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbIconButton>
+        <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" main_navigation-scope>
+            <span class="material-icons">
+                search
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbIconButton>
+        <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" main_navigation-scope>
+            <span class="material-icons">
+                favorite
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbIconButton>
+        <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" main_navigation-scope>
+            <span class="material-icons">
+                more_vert
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbIconButton>
+    </IgbNavbar>
+    <div class="row-layout group_1">
+        <IgbNavDrawer @ref="_navDrawer" class="nav-drawer" main_navigation-scope>
+            <IgbNavDrawerHeaderItem>
+                <div>App scenarios</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/dynamic_routing"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        navigation
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Routes w/ param</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/financial_chart"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        candlestick_chart
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Financial chart</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/selection_detail"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        check_box
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Selection-detail</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/grid_with_templates"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        account_circle
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Grid with templates</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/grid_crud"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        remove_circle
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Grid CRUD</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/grid_and_tree_grid"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        table_chart
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Grid and Tree grid</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/reveal_dashboard"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        dashboard
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Reveal Dashboard</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerHeaderItem>
+                <div>Layouts</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/layouts"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        view_quilt
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Flex layouts</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/position"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        my_location
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Position</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/tab_layout"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        tab
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Tab layout</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/expansion_panels_tree"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        expand_more
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Expansion panels &amp; Tree</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/stepper"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        arrow_forward
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Stepper</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerHeaderItem>
+                <div>Content</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/card_calendar"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        calendar_today
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Card-Calendar</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/lists_data"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        list
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">List + data</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/pivot_grid"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        grid_on
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Pivot grid</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/category_charts"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        insert_chart_outlined
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Category charts</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/type_scale"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        text_fields
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Type scale + text</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerHeaderItem>
+                <div>Inputs</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/inputs"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        keyboard
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Inputs + buttons</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/pickers_combo"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        arrow_drop_down_circle
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Pickers</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerHeaderItem>
+                <div>Notifications</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/dialogs_and_dropdowns"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        open_in_new
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Dialogs and overlays</div>
+            </IgbNavDrawerItem>
+            <IgbNavDrawerHeaderItem>
+                <div>Misc</div>
+            </IgbNavDrawerHeaderItem>
+            <IgbNavDrawerItem @onclick="@(e => Navigate("/image"))">
+                <span slot="icon">
+                    <span class="material-icons icon">
+                        account_circle
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </span>
+                <div slot="content">Images</div>
+            </IgbNavDrawerItem>
+        </IgbNavDrawer>
+        <div class="view-container">
+            @Body
+        </div>
+    </div>
+</div>
+
+@code {
+    private IgbNavDrawer _navDrawer;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

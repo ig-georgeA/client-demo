@@ -1,0 +1,218 @@
+@page "/expansion_panels_tree"
+@using NestedDataRepeat
+@using Models.NestedDataRepeat
+@inject INestedDataRepeatService NestedDataRepeatService
+
+<div class="row-layout expansion-panels-tree-container">
+    <div class="column-layout group">
+        <IgbCard class="card" expansion_panels_tree-scope>
+            <IgbCardHeader>
+                <div slot="thumbnail">
+                    <IgbAvatar Src="assets/Avatar9.png" Shape="AvatarShape.Circle" class="avatar" expansion_panels_tree-scope></IgbAvatar>
+                </div>
+                <h3 slot="title">
+                    FirstName LastName
+                </h3>
+                <h5 slot="subtitle">
+                    myemail@@email.com
+                </h5>
+            </IgbCardHeader>
+            <IgbCardActions class="actions-content" expansion_panels_tree-scope>
+                <IgbButton Variant="ButtonVariant.Flat" slot="end" class="button" expansion_panels_tree-scope>
+                    <span class="material-icons">
+                        exit_to_app
+                    </span>
+                    <span>Sign out</span>
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+            </IgbCardActions>
+        </IgbCard>
+        <IgbExpansionPanel Open="true" class="expansion-panel" expansion_panels_tree-scope>
+            <IgbList class="list" expansion_panels_tree-scope>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            person
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">User profile</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            assessment
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Analytics</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            book
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Favorites</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            people
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Shared with others</div>
+                </IgbListItem>
+            </IgbList>
+            <span slot="title">Account</span>
+        </IgbExpansionPanel>
+        <IgbExpansionPanel class="expansion-panel" expansion_panels_tree-scope>
+            <IgbList class="list" expansion_panels_tree-scope>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            palette
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Theme</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            vpn_key
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Change password</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            call_split
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Mail rules</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            forum
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Chat preferences</div>
+                </IgbListItem>
+            </IgbList>
+            <span slot="title">Preferences</span>
+        </IgbExpansionPanel>
+        <IgbExpansionPanel class="expansion-panel" expansion_panels_tree-scope>
+            <IgbList class="list" expansion_panels_tree-scope>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            folder
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Title goes here</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            folder
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Title goes here</div>
+                </IgbListItem>
+                <IgbListItem>
+                    <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar_1" expansion_panels_tree-scope>
+                        <span class="material-icons">
+                            folder
+                        </span>
+                    </IgbAvatar>
+                    <div slot="title">Title goes here</div>
+                </IgbListItem>
+            </IgbList>
+            <span slot="title">Panel 3</span>
+        </IgbExpansionPanel>
+        <IgbTree class="tree" expansion_panels_tree-scope>
+            <IgbTreeItem Label="Design">
+                <IgbTreeItem Label="Figma" Expanded="true"></IgbTreeItem>
+                <IgbTreeItem Label="Adobe XD" Expanded="true"></IgbTreeItem>
+                <IgbTreeItem Label="Sketch" Expanded="true"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Development">
+                <IgbTreeItem Label="Angular" Expanded="true"></IgbTreeItem>
+                <IgbTreeItem Label="Blazor" Expanded="true"></IgbTreeItem>
+                <IgbTreeItem Label="Web components" Expanded="true"></IgbTreeItem>
+            </IgbTreeItem>
+        </IgbTree>
+    </div>
+    <div class="row-layout row-layout-1">
+        <div class="column-layout column-layout-1">
+            <h5 class="title-1">
+                Sign in
+            </h5>
+            <IgbInput Label="Username" Required Outlined="false" class="input-group-1" expansion_panels_tree-scope></IgbInput>
+            <IgbInput DisplayType="InputType.Password" Label="Password" Required Outlined="false" class="input-group-1_1" expansion_panels_tree-scope></IgbInput>
+            <div class="row-layout row-layout-2">
+                <IgbCheckbox LabelPosition="CheckboxBaseLabelPosition.After" class="checkbox-1" expansion_panels_tree-scope>
+                    Remember me
+                </IgbCheckbox>
+                <a class="typography__body-1 hyperlink">
+                    Forgot password?
+                </a>
+            </div>
+            <IgbButton class="button-1" expansion_panels_tree-scope>
+                Sign in
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Outlined" class="button-1_1" expansion_panels_tree-scope>
+                Create a new account
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <p class="typography__caption text-2">
+                By signing in, you are agreeing to our terms of use and privacy policy
+            </p>
+        </div>
+    </div>
+    <div class="column-layout group_1">
+        <div class="column-layout group_2">
+            <IgbTree ToggleNodeOnClick="true" SingleBranchExpand="true" class="tree_1" expansion_panels_tree-scope>
+                @foreach (var item in _nestedDataRepeatNestedData?.Components ?? Array.Empty<ComponentsType>())
+                {
+                    <IgbTreeItem Label="@item.Name">
+                        @foreach (var item1 in item.PropertiesPanel)
+                        {
+                            <IgbTreeItem Label="@item1.Name">
+                                @foreach (var item2 in item1.Content)
+                                {
+                                    <IgbTreeItem Label="@item2.Name" Expanded="true"></IgbTreeItem>
+                                }
+                            </IgbTreeItem>
+                        }
+                    </IgbTreeItem>
+                }
+            </IgbTree>
+        </div>
+        <IgbAccordion SingleExpand="true" class="accordion" expansion_panels_tree-scope>
+            <IgbExpansionPanel>
+                <img src="assets/SketchParser.png" class="image" />
+                <span slot="title">Accordion 1</span>
+            </IgbExpansionPanel>
+            <IgbExpansionPanel>
+                <img src="assets/Image.svg" class="image" />
+                <span slot="title">Accordion 2</span>
+            </IgbExpansionPanel>
+            <IgbExpansionPanel>
+                <img src="assets/BrandGuidelines.png" class="image" />
+                <span slot="title">Accordion 3</span>
+            </IgbExpansionPanel>
+        </IgbAccordion>
+    </div>
+</div>
+
+@code {
+    private NestedDataType _nestedDataRepeatNestedData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _nestedDataRepeatNestedData = await NestedDataRepeatService.GetNestedData();
+        await base.OnInitializedAsync();
+    }
+}

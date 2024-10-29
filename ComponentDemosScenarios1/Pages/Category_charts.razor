@@ -1,0 +1,64 @@
+@page "/category_charts"
+@using Financial
+@using Models.Financial
+@inject IFinancialService FinancialService
+
+<div class="row-layout category-charts-container">
+    <div class="column-layout group">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.Column" ChartTitle="Column" IncludedProperties="@(new[] { "Franchise", "TotalWorldBoxOfficeRevenue", "HighestGrossingMovieInSeries" })" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group">
+        <IgbCategoryChart DataSource="@_financialGlobalElectricityDemand" ChartType="CategoryChartType.Area" ChartTitle="Area" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.Point" ChartTitle="Point" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.Line" ChartTitle="Line" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.Spline" ChartTitle="Spline" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.SplineArea" ChartTitle="Spline area" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart_1" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.StepArea" ChartTitle="Step area" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <IgbCategoryChart DataSource="@_financialBoxOfficeRevenue" ChartType="CategoryChartType.StepLine" ChartTitle="Step line" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <IgbCategoryChart DataSource="@_financialTrading" ChartType="CategoryChartType.Waterfall" ChartTitle="Waterfall" IncludedProperties="@(new[] { "Category", "OpenPrice" })" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" category_charts-scope></IgbCategoryChart>
+    </div>
+    <div class="column-layout group_1">
+        <h6 class="h6">
+            Pie chart with start angle 270deg
+        </h6>
+        <IgbPieChart DataSource="@_financialGlobalElectricityDemand" StartAngle="270" OthersCategoryType="OthersCategoryType.Number" OthersCategoryThreshold="10" LabelMemberPath="Label" ValueMemberPath="Value" class="pie-chart" category_charts-scope></IgbPieChart>
+        <IgbGrid Data="@_financialGlobalElectricityDemand" PrimaryKey="Value" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" category_charts-scope>
+            <IgbColumn Field="Value" DataType="GridColumnDataType.Number" Header="Value" Sortable="true" Selectable="false"></IgbColumn>
+            <IgbColumn Field="Label" DataType="GridColumnDataType.String" Header="Label" Sortable="true" Selectable="false"></IgbColumn>
+        </IgbGrid>
+    </div>
+    <div class="column-layout group_1">
+        <h6 class="h6">
+            Pie chart with label outside + others 20%
+        </h6>
+        <IgbPieChart DataSource="@_financialGlobalElectricityDemand" LabelsPosition="LabelsPosition.OutsideEnd" OthersCategoryThreshold="20" LabelMemberPath="Label" ValueMemberPath="Value" class="pie-chart" category_charts-scope></IgbPieChart>
+    </div>
+</div>
+
+@code {
+    private List<BoxOfficeRevenueType> _financialBoxOfficeRevenue = new();
+    private List<GlobalElectricityDemandType> _financialGlobalElectricityDemand = new();
+    private List<TradingType> _financialTrading = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _financialBoxOfficeRevenue = await FinancialService.GetBoxOfficeRevenue();
+        _financialGlobalElectricityDemand = await FinancialService.GetGlobalElectricityDemand();
+        _financialTrading = await FinancialService.GetTrading();
+        await base.OnInitializedAsync();
+    }
+}

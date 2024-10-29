@@ -1,0 +1,55 @@
+@page "/image"
+
+<div class="row-layout image-container">
+    <div class="row-layout group">
+        <h1 class="h1">
+            Building faster paths to amazing experiences
+        </h1>
+        <img src="https://static.infragistics.com/marketing/IDS/infragistics/hero.png?v=20191212192700" class="image" />
+    </div>
+    <div class="column-layout group_1">
+        <img src="https://static.infragistics.com/marketing/IDS/infragistics/hero.png?v=20191212192700" class="image_1" />
+        <img src="assets/Avatar1.png" class="image_2" />
+        <IgbCard class="card" image-scope>
+            <IgbCardHeader>
+                <h3 slot="title">
+                    Title goes here...
+                </h3>
+                <h5 slot="subtitle">
+                    Subtitle goes here...
+                </h5>
+            </IgbCardHeader>
+            <IgbCardContent class="body-content" image-scope>
+                <img src="https://static.infragistics.com/marketing/Website/General/Infragistics-horizontal.svg" class="image_3" />
+            </IgbCardContent>
+            <IgbCardActions class="actions-content" image-scope>
+                <IgbButton Variant="ButtonVariant.Flat" slot="start" class="button" image-scope>
+                    Button
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+                <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" image-scope>
+                    <span class="material-icons">
+                        favorite
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </IgbIconButton>
+                <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" image-scope>
+                    <span class="material-icons">
+                        bookmark
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </IgbIconButton>
+                <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" image-scope>
+                    <span class="material-icons">
+                        share
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </IgbIconButton>
+            </IgbCardActions>
+        </IgbCard>
+        <img class="image_4" />
+    </div>
+</div>
+
+@code {
+}

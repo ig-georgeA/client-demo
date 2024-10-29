@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IgniteUI.Blazor" Version="24.1.67" />
+    <PackageReference Include="System.Reactive" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Shared/MainLayout.razor.css" CssScope="main_navigation-scope" />
+    <None Update="Pages/Dynamic_routing.razor.css" CssScope="dynamic_routing-scope" />
+    <None Update="Pages/Financial_chart.razor.css" CssScope="financial_chart-scope" />
+    <None Update="Pages/Route_details.razor.css" CssScope="route_details-scope" />
+    <None Update="Pages/Selection_detail.razor.css" CssScope="selection_detail-scope" />
+    <None Update="Pages/Grid_with_templates.razor.css" CssScope="grid_with_templates-scope" />
+    <None Update="Pages/Grid_CRUD.razor.css" CssScope="grid_crud-scope" />
+    <None Update="Pages/Grid_and_Tree_grid.razor.css" CssScope="grid_and_tree_grid-scope" />
+    <None Update="Pages/Reveal_Dashboard.razor.css" CssScope="reveal_dashboard-scope" />
+    <None Update="Pages/Layouts.razor.css" CssScope="layouts-scope" />
+    <None Update="Pages/Position.razor.css" CssScope="position-scope" />
+    <None Update="Pages/Tab_layout.razor.css" CssScope="tab_layout-scope" />
+    <None Update="Pages/Expansion_panels_tree.razor.css" CssScope="expansion_panels_tree-scope" />
+    <None Update="Pages/Stepper.razor.css" CssScope="stepper-scope" />
+    <None Update="Pages/Card_Calendar.razor.css" CssScope="card_calendar-scope" />
+    <None Update="Pages/Lists_data.razor.css" CssScope="lists_data-scope" />
+    <None Update="Pages/Pivot_grid.razor.css" CssScope="pivot_grid-scope" />
+    <None Update="Pages/Category_charts.razor.css" CssScope="category_charts-scope" />
+    <None Update="Pages/Type_scale.razor.css" CssScope="type_scale-scope" />
+    <None Update="Pages/Inputs.razor.css" CssScope="inputs-scope" />
+    <None Update="Pages/Pickers_Combo.razor.css" CssScope="pickers_combo-scope" />
+    <None Update="Pages/Dialogs_and_dropdowns.razor.css" CssScope="dialogs_and_dropdowns-scope" />
+    <None Update="Pages/Image.razor.css" CssScope="image-scope" />
+  </ItemGroup>
+
+</Project>

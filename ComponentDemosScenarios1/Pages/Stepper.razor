@@ -1,0 +1,100 @@
+@page "/stepper"
+@using IG_NorthwindAPI
+@using Models.IG_NorthwindAPI
+@inject IIG_NorthwindAPIService IG_NorthwindAPIService
+
+<div class="column-layout stepper-container">
+    <IgbStepper TitlePosition="StepperTitlePosition.Bottom" @ref="_stepper" class="stepper" stepper-scope>
+        <IgbStep Invalid="true">
+            <div class="column-layout step-content">
+                <div class="column-layout group">
+                    <div class="row-layout group">
+                        <IgbInput Label="Label" Required Outlined="true" class="input" stepper-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput DisplayType="InputType.Password" Label="Password" Required Outlined="true" class="input" stepper-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    lock
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Label" Required Outlined="true" class="input" stepper-scope></IgbInput>
+                    </div>
+                    <IgbButton class="button button_2" stepper-scope>
+                        Some action
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+                <IgbGrid Data="@_iGNorthwindAPIEmployeeDto" PrimaryKey="EmployeeId" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" class="ig-typography grid" stepper-scope>
+                    <IgbColumn Field="EmployeeId" DataType="GridColumnDataType.Number" Header="employeeId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="FirstName" DataType="GridColumnDataType.String" Header="firstName" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="title" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="titleOfCourtesy" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="BirthDate" DataType="GridColumnDataType.String" Header="birthDate" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="HireDate" DataType="GridColumnDataType.String" Header="hireDate" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="AddressId" DataType="GridColumnDataType.String" Header="addressId" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Street" DataType="GridColumnDataType.String" Header="address street" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.City" DataType="GridColumnDataType.String" Header="address city" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Region" DataType="GridColumnDataType.String" Header="address region" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.PostalCode" DataType="GridColumnDataType.String" Header="address postalCode" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Country" DataType="GridColumnDataType.String" Header="address country" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Address.Phone" DataType="GridColumnDataType.String" Header="address phone" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Notes" DataType="GridColumnDataType.String" Header="notes" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="AvatarUrl" DataType="GridColumnDataType.String" Header="avatarUrl" Sortable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ReportsTo" DataType="GridColumnDataType.Number" Header="reportsTo" Sortable="true" Selectable="false"></IgbColumn>
+                </IgbGrid>
+            </div>
+            <p slot="title">Address</p>
+        </IgbStep>
+        <IgbStep Invalid="true">
+            <div class="row-layout step-content_1">
+                <p class="typography__body-1 text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta nulla asperiores, officia ullam recusandae voluptatem omnis perferendis vitae non magni magnam praesentium placeat nemo quas repudiandae. Nisi, quo ex!
+                </p>
+            </div>
+            <p slot="title">Item</p>
+        </IgbStep>
+        <IgbStep Optional="true">
+            <div class="row-layout step-content_1">
+                <p class="typography__body-1 text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta nulla asperiores, officia ullam recusandae voluptatem omnis perferendis vitae non magni magnam praesentium placeat nemo quas repudiandae. Nisi, quo ex!
+                </p>
+            </div>
+            <p slot="title">Wrap</p>
+            <p slot="subtitle">(Optional)</p>
+        </IgbStep>
+    </IgbStepper>
+    <div class="row-layout group_1">
+        <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => _stepper!.PrevAsync())" class="button_1" stepper-scope>
+            <span class="material-icons">
+                arrow_back
+            </span>
+            <span>PREV</span>
+            <IgbRipple></IgbRipple>
+        </IgbButton>
+        <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => _stepper!.NextAsync())" class="button_1" stepper-scope>
+            <span>Next</span>
+            <span class="material-icons">
+                arrow_forward
+            </span>
+            <IgbRipple></IgbRipple>
+        </IgbButton>
+    </div>
+</div>
+
+@code {
+    private IgbStepper _stepper;
+    private List<EmployeeDto> _iGNorthwindAPIEmployeeDto = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iGNorthwindAPIEmployeeDto = await IG_NorthwindAPIService.GetEmployeeDtoList();
+        await base.OnInitializedAsync();
+    }
+}

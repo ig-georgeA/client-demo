@@ -1,0 +1,215 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.card-calendar-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.row-layout {
+    display: flex;
+}
+.group {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 32px;
+    position: relative;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.card-10 {
+    padding: 0.0px;
+    width: 320.0px;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    max-width: 320.0px;
+    flex-shrink: 0;
+}
+.card-1 {
+    padding: 0.0px;
+    width: 497px;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    max-width: 497px;
+}
+.card-2 {
+    padding: 0.0px;
+    width: 371.0px;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    max-width: 371.0px;
+    flex-shrink: 0;
+    flex-direction: row;
+}
+.group_1 {
+    flex-grow: 1;
+}
+.card-11 {
+    padding: 0.0px;
+    width: max-content;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    flex-shrink: 0;
+}
+.card-3 {
+    padding: 0.0px;
+    width: 493px;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    max-width: 493px;
+    flex-shrink: 0;
+    flex-direction: row;
+}
+.group_2 {
+    width: 100%;
+}
+.column-layout-2 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    margin: 0.0px;
+    padding: 0.0px;
+}
+.card-5 {
+    padding: 0.0px;
+    height: max-content;
+    min-width: 320.0px;
+    min-height: 50.0px;
+    flex-shrink: 0;
+    flex-direction: row;
+}
+.column-layout-3 {
+    border-color: hsla(var(--ig-gray-400));
+    border-width: 1px 0px 0px;
+    border-style: solid;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 32px;
+    margin: 0.0px;
+    padding: 8px 0.0px 0.0px;
+}
+.group_3 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.group_4 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.actions-content {
+    min-width: 50px;
+    min-height: 40px;
+}
+.icon-button {
+    --ig-size: var(--ig-size-small);
+    margin: 0.0px;
+    padding: 0.0px;
+}
+.media-content {
+    height: 200px;
+}
+.media-content_1 {
+    height: 300px;
+    min-height: 300px;
+    max-height: 300px;
+}
+.media-content_2 {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+}
+.media-content_3 {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+}
+.body-content {
+    min-width: 50px;
+    min-height: 50px;
+}
+.divider {
+    display: none;
+}
+.actions-content_1 {
+    flex-direction: column;
+    align-items: end;
+    min-width: 50px;
+    min-height: 40px;
+}
+.avatar {
+    --ig-size: var(--ig-size-small);
+}
+.image {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+.text-2 {
+    margin: 0.0px;
+    padding: 0.0px;
+    height: max-content;
+}
+.icon {
+    --size: 36px;
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+}
+.text-3 {
+    margin: 0.0px;
+    padding: 0.0px;
+    height: max-content;
+    flex-shrink: 0;
+}
+.calendar {
+    margin: 16px;
+    width: max-content;
+    height: max-content;
+    min-width: max-content;
+    flex-shrink: 0;
+}
+.avatar::part(base) {
+    background-color: transparent;
+}
+.button {
+    --ig-size: var(--ig-size-medium);
+    margin: 0.0px;
+    padding: 0.0px;
+    width: max-content;
+    height: max-content;
+}
+.rating {
+    --ig-size: var(--ig-size-medium);
+    width: max-content;
+    height: max-content;
+}
+.date-picker {
+    width: 377px;
+    height: max-content;
+    min-width: 120px;
+    max-width: 377px;
+}
